@@ -79,13 +79,13 @@ $(addprefix ${BUILDDIR}/,$(sort ${TDSFILES} ${CTANFILES})): ${MAINFILES}
 	${MAKE} --no-print-directory build
 
 clean:
-	latexmk -C ${CONTRIBUTION}.dtx
+	latexmk -C ${MAINDTXS}
 	${RM} ${CLEANFILES}
 	${RM} -r ${BUILDDIR} ${TDSDIR} ${TDSZIP} ${CTAN_FILE}
 
 
 distclean:
-	latexmk -c ${CONTRIBUTION}.dtx
+	latexmk -C ${MAINDTXS}
 	${RM} ${CLEANFILES}
 	${RM} -r ${BUILDDIR} ${TDSDIR}
 
