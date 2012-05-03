@@ -77,11 +77,149 @@
 % \maketitle
 %
 % \begin{abstract}\noindent
-% <+abstract+>
+% This add-on package to \pkg{listings} provides a boolean \Key{autogobble}
+% setting which will automatically set the \Key{gobble} setting to indention
+% of the first line.
+%
+% This package was created as response to the question
+% \href{http://tex.stackexchange.com/q/19953/2975}{``How to automatically skip leading white spaces in listings?''}
+% on \href{http://tex.stackexchange.com/}{\TeX\ Stack Exchange}.
 % \end{abstract}
 %
 % \section{Introduction}
-% <++>
+% The \pkg{listings} package has a setting \Key{gobble}'='<number> which allows to remove a certain number
+% of characters from the beginning of every line in the listing. This can be used to indent the listing
+% in the source code without affecting the printed result. However, this forces the user to set a suitable
+% value manually. An incorrect value will lead either to an indented listing or to missing leading characters.
+%
+% A solution for this is to automatically detect the used indention of the listing and that the \Key{gobble} setting
+% to this value. This functionality is provided by this package.
+% For this it reads and scans the first listing line and reinserts it again afterwards.
+%
+%
+% \section{Usage}
+% After loading \pkg{lstautogobble} the following new \pkg{listings} setting 
+% is available:
+%
+% \DescribeKey{autogobble}'=true|false'
+% This boolean setting switches the autogobble feature on or off.
+% If no value is used the default is `|true|'. The initial setting is `|false|'.
+% One enabled the first line of any \pkg{lstlisting} is scanned and the amount
+% of spaces or tabulators is used to set the \Key{gobble} setting.
+% If \Key{gobble} is set manually it will not be overwritten and \Key{autogobble}'=true'
+% is ignored.
+%
+% \section{Examples / Tests}
+% The following code is intended as examples and also for testing the package.
+% Here the \Key{autogobble} feature is globally enabled.
+%
+% \lstdefinestyle{exampleresult}{basicstyle=\ttfamily,columns=fullflexible,autogobble=true}%
+%
+% \begin{example}
+%   \caption{Only environment (with \Key{autogobble} enabled globally).}
+%   \begin{examplecode}
+%   \begin{lstlisting}
+%     test
+%     it
+%   \end{lstlisting}
+%   \end{examplecode}
+% \end{example}
+%
+% \begin{example}
+%   \caption{With options (must be skipped and reinserted).}
+%   \begin{examplecode}
+%   \begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
+%       test
+%       it
+%   \end{lstlisting}
+%   \end{examplecode}
+% \end{example}
+%
+% \begin{example}
+%   \caption{Manual gobble option (override). Intentionally set to an incorrect value.}
+%   \begin{examplecode}
+%   \begin{lstlisting}[gobble=7]
+%         test
+%         it
+%   \end{lstlisting}
+%   \end{examplecode}
+% \end{example}
+%
+% \begin{example}
+%   \caption{Locally turned-off \Key{autogobble}.}
+%   \begin{examplecode}
+%   \begin{lstlisting}[autogobble=false]
+%       test
+%       it
+%   \end{lstlisting}
+%   \end{examplecode}
+% \end{example}
+%
+% \begin{example}
+%   \caption{With some material on the same line as \texttt{\string\begin} (dropped by listings. The warning message got preserved).}
+%   \begin{examplecode}
+%   \begin{lstlisting} some text at the first line
+%       test
+%       it
+%   \end{lstlisting}
+%   \end{examplecode}
+% \end{example}
+%
+% \begin{example}
+%   \caption{As before, but with optional argument.}
+%   \begin{examplecode}
+%   \begin{lstlisting}[] some text at the first line
+%       test
+%       it
+%   \end{lstlisting}
+%   \end{examplecode}
+% \end{example}
+%
+% \begin{example}
+%   \caption{Different indention levels.}
+%   \begin{examplecode}
+%   \begin{lstlisting}
+%       test
+%       it
+%   \end{lstlisting}
+%   \end{examplecode}
+%   \begin{examplecode}
+%       \begin{lstlisting}
+%           test
+%           it
+%       \end{lstlisting}
+%   \end{examplecode}
+%   \begin{examplecode}
+%       \begin{lstlisting}
+%   test
+%   it
+%       \end{lstlisting}
+%   \end{examplecode}
+%   \begin{examplecode}
+%           \begin{lstlisting}
+%                           test
+%                           it
+%           \end{lstlisting}
+%   \end{examplecode}
+%   \begin{examplecode}
+%   \begin{lstlisting}
+%                   test
+%                   it
+%   \end{lstlisting}
+%   \end{examplecode}
+% \end{example}
+%
+% \begin{example}
+%   \caption{Some real C Code.}
+%   \begin{examplecode}
+%   \begin{lstlisting}[autogobble]
+%      #include <stdio.h>
+%      int main(){
+%        printf("tex.stackexchange.com: the coolest community ever!\n");
+%      }
+%   \end{lstlisting}
+%   \end{examplecode}
+% \end{example}
 %
 % \StopEventually{}
 % \clearpage
