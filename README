@@ -1,6 +1,6 @@
 LaTeX bundle 'lstaddons'
 ~~~~~~~~~~~~~~~~~~~~~~~~
-Copyright (c) 2012 by Martin Scharrer <martin@scharrer-online.de>
+Copyright (c) 2011-2012 by Martin Scharrer <martin@scharrer-online.de>
 CTAN: http://www.ctan.org/pkg/lstaddons
 Code repository: https://bitbucket.org/martin_scharrer/lstaddons
 
@@ -14,7 +14,7 @@ The add-ons are so far:
 
 lstlinbgrd
 ~~~~~~~~~~
-Provides a 'linebackgroundcolor' option for 'lstlisting' which
+Provides 'linebackground' options for 'lstlisting' which
 can be used to color the background of each line of the listing.
 The use of conditionals which depend on the line number is supported,
 which allows zebra-effects etc.
