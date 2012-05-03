@@ -36,6 +36,15 @@
 \EnableCrossrefs
 \CodelineIndex
 \RecordChanges
+\floatstyle{plaintop}
+\restylefloat{example}
+\belowcaptionskip=\medskipamount
+
+\renewcommand\topfraction{.9}
+\renewcommand\bottomfraction{.9}
+\renewcommand\textfraction{.1}
+\renewcommand\floatpagefraction{.7}
+\renewcommand\dbltopfraction{.9}
 \begin{document}
   \DocInput{\jobname.dtx}
   \PrintChanges
@@ -81,7 +90,124 @@
 % \end{abstract}
 %
 % \section{Introduction}
-% <++>
+%
+% \clearpage
+% \section{Usage}
+% The following options are added for \pkg{listings} and can be used in \Macro\lstset or
+% any \pkg{listings} macro which accepts options.
+%
+% \DescribeKey{linebackgroundcolor}'='<color commands>
+% This options allows the user to provide some \LaTeX\ code which sets the background
+% color. The code must use \Macro\color{<color>} or a different color macro.
+% The use of conditionals is permitted and can be used to color lines depending on
+% the line number (|\value{lstnumber}|) etc., as shown in the example section.
+% The initial setting of this option is |{}|, i.e.\ no coloring is done.
+%
+% \DescribeKey{linebackgroundsep}'='<length>
+% Sets the distance of the begin of the background color bar and the line.
+% A horizontal skip of this amount to the left from the start of the line is done 
+% before drawing the background line. This means that positive amounts will move
+% the background color bar to the left and negative amounts to the right.
+% This does not effect the total width of the color bar.
+%
+% \DescribeKey{linebackgroundwidth}'='<length>
+% Sets the width of the background color bar. The initial default value is |\linewidth|.
+% Note that the background width does not take the actual width of the text into account,
+% because \pkg{listing} does not provide this information.
+%
+% \DescribeKey{linebackgroundheight}'='<length>
+% Sets the height of the background color bar, i.e.\ the amount above the baseline.
+% The initial value is |\ht\strutbox|, i.e.\ the full height of the line.
+%
+% \DescribeKey{linebackgrounddepth}'='<length>
+% Sets the depth of the background color bar, i.e.\ the amount below the baseline.
+% The initial value is |\dp\strutbox|, i.e.\ the full depth of the line.
+%
+% \DescribeKey{linebackgroundcmd}'='<macro>
+% This advanced option sets the macro used to draw the background color bar. It is called at the correct
+% starting position and receives the width, height and depth as three arguments in this order.
+% The initial value is |\color@block| which is an internal macro of the \pkg{xcolor} package.
+% This option can be used by advanced users to fine tune the background coloring.
+%
+%
+% \clearpage
+% \section{Examples}
+%   \def\PrintExample{%
+%       \begingroup
+%       \BoxExample
+%       \sffamily
+%       \par\medskip
+%       \centerline{Code\strut}%
+%       \smallskip
+%       \hrule
+%       \usebox\examplecodebox
+%       \par\hrule\bigskip
+%       \centerline{Result\strut}%
+%       \smallskip
+%       \hrule
+%       \usebox\exampleresultbox
+%       \par\hrule\medskip
+%       \endgroup
+%   }
+% 
+% \begin{example}
+%   \caption{Basic example: zebra effect.}
+%   \begin{examplecode}
+%   \begin{lstlisting}[language=C,basicstyle=\ttfamily,linebackgroundcolor={\ifodd\value{lstnumber}\color{green}\fi}]
+%   /**
+%   * Prints Hello World.
+%   **/
+%   #include <stdio.h>
+  
+%   int main(void) {
+%   printf("Hello World!");
+%   return 0;
+%   }
+%   \end{lstlisting}
+%   \end{examplecode}
+% \end{example}
+% \begin{example}
+%   \caption{Two-colored zebra effect with extra adjustments.}
+%   \begin{examplecode}
+%   \begin{lstlisting}[language=C,basicstyle=\ttfamily\Large,linebackgroundcolor={\ifodd\value{lstnumber}\color{green}\else\color{yellow}\fi},numbers=left,linebackgroundsep=1em,linebackgroundwidth=18em]
+%   /**
+%   * Prints Hello World.
+%   **/
+%   #include <stdio.h>
+%
+%   int main(void) {
+%   printf("Hello World!");
+%   return 0;
+%   }
+%   \end{lstlisting}
+%   \end{examplecode}
+% \end{example}
+%
+% \begin{example}
+%   \caption{Gradient effect with extra adjustments.}
+%   \begin{examplecode}
+%   \begin{lstlisting}[language=C,basicstyle=\ttfamily\tiny,linebackgroundcolor={\color{blue!\the\numexpr 5*\value{lstnumber}\relax}},linebackgroundheight=1.7ex,linebackgrounddepth=.4ex]
+%   /**
+%   * Prints Hello World.
+%   **/
+%   #include <stdio.h>
+%
+%   int main(void) {
+%   printf("Hello World!");
+%   return 0;
+%   }
+%   /**
+%   * Prints Hello World.
+%   **/
+%   #include <stdio.h>
+%
+%   int main(void) {
+%   printf("Hello World!");
+%   return 0;
+%   }
+%   \end{lstlisting}
+%   \end{examplecode}
+% \end{example}
 %
 % \StopEventually{}
 % \clearpage
