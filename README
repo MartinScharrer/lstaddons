@@ -12,8 +12,8 @@ to 'listings'.
 The add-ons are so far:
 
 
-lstlinbgrd
-~~~~~~~~~~
+lstlinebgrd
+~~~~~~~~~~~
 Provides 'linebackground' options for 'lstlisting' which
 can be used to color the background of each line of the listing.
 The use of conditionals which depend on the line number is supported,
