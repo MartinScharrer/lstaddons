@@ -1,8 +1,8 @@
 LaTeX bundle 'lstaddons'
 ~~~~~~~~~~~~~~~~~~~~~~~~
-Copyright (c) 2011-2016 by Martin Scharrer <martin@scharrer-online.de>
+Copyright (c) 2011-2022 by Martin Scharrer <martin.scharrer@web.de>
 CTAN: http://www.ctan.org/pkg/lstaddons
-Code repository: https://bitbucket.org/martin_scharrer/lstaddons
+Code repository: https://github.com/MartinScharrer/lstaddons/
 
 This bundle contains a small collections of add-on packages for
 the 'listings' package.
