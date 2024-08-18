@@ -1,6 +1,6 @@
 LaTeX bundle 'lstaddons'
 ~~~~~~~~~~~~~~~~~~~~~~~~
-Copyright (c) 2011-2022 by Martin Scharrer <martin.scharrer@web.de>
+Copyright (c) 2011-2024 by Martin Scharrer <martin.scharrer@web.de>
 CTAN: http://www.ctan.org/pkg/lstaddons
 Code repository: https://github.com/MartinScharrer/lstaddons/
 
